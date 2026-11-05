@@ -1,0 +1,11 @@
+node_modules/
+.vitepress/cache/
+.vitepress/dist/
+public/*
+!public/CNAME
+__pycache__/
+*.pyc
+.DS_Store
+.idea/
+.env
+*.local

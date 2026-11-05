@@ -1,0 +1,73 @@
+name: 每日打卡（Cloud Check-in）
+
+on:
+  workflow_dispatch:
+    inputs:
+      date:
+        description: '日期 YYYY-MM-DD（留空 = 今天，Asia/Shanghai）'
+        required: false
+        default: ''
+      hours:
+        description: '投入小时数（0–24，支持小数，如 2 或 2.5）'
+        required: true
+        default: '2'
+      focus:
+        description: '今天做了什么（一句话）'
+        required: true
+        default: ''
+      link:
+        description: '产出链接（commit / 博客 / 文档，可空）'
+        required: false
+        default: ''
+      takeaway:
+        description: '一句收获（可空）'
+        required: false
+        default: ''
+
+permissions:
+  contents: write
+
+concurrency:
+  group: cloud-checkin
+  cancel-in-progress: false
+
+jobs:
+  checkin:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Merge check-in into data/checkins.json
+        env:
+          IN_DATE: ${{ inputs.date }}
+          IN_HOURS: ${{ inputs.hours }}
+          IN_FOCUS: ${{ inputs.focus }}
+          IN_LINK: ${{ inputs.link }}
+          IN_TAKEAWAY: ${{ inputs.takeaway }}
+        run: |
+          args=(--hours "$IN_HOURS" --focus "$IN_FOCUS" --link "$IN_LINK" --takeaway "$IN_TAKEAWAY")
+          if [ -n "$IN_DATE" ]; then
+            args+=(--date "$IN_DATE")
+          fi
+          python3 scripts/cloud_checkin.py "${args[@]}"
+
+      - name: Commit and push
+        env:
+          IN_DATE: ${{ inputs.date }}
+        run: |
+          git config user.name "${GITHUB_ACTOR}"
+          git config user.email "${GITHUB_ACTOR}@users.noreply.github.com"
+          git add data/checkins.json
+          if git diff --cached --quiet; then
+            echo "没有数据变化，跳过提交"
+            exit 0
+          fi
+          label="${IN_DATE:-$(date +%F)}"
+          git commit -m "checkin: ${label}"
+          git push

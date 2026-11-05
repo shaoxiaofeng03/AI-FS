@@ -1,0 +1,15 @@
+{
+  "name": "ai-fullstack-plan",
+  "private": true,
+  "type": "module",
+  "description": "Java 后端 → AI 应用 / Agent 全栈 · 22 周作战包（VitePress + GitHub Pages）",
+  "scripts": {
+    "site:prepare": "python3 scripts/prepare_site.py",
+    "docs:dev": "npm run site:prepare && vitepress dev",
+    "docs:build": "npm run site:prepare && vitepress build",
+    "docs:preview": "vitepress preview"
+  },
+  "devDependencies": {
+    "vitepress": "^1.6.4"
+  }
+}

@@ -1,0 +1,43 @@
+name: Validate Plan
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  plan:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Validate plan / checkin / data
+        run: |
+          python3 scripts/validate_plan.py --strict
+          python3 scripts/gen_checkin.py --all --dry-run >/dev/null
+          python3 scripts/build_tracker.py --check
+          python3 scripts/plan_to_csv.py --check >/dev/null
+          python3 -m py_compile scripts/*.py
+
+  site:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 11
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: pnpm
+      - run: pnpm install --frozen-lockfile
+      - name: Build site
+        run: pnpm run docs:build
+        env:
+          BASE_PATH: /

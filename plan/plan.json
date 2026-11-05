@@ -1,0 +1,544 @@
+{
+  "meta": {
+    "title": "Java 后端 → AI 应用 / Agent 全栈工程师 · 22 周作战计划",
+    "version": "1.1",
+    "created": "2026-11-05",
+    "start": "2026-11-09",
+    "end": "2027-04-11",
+    "weeklyHours": 20,
+    "targetOffer": "2027 年 4 月中前拿到 AI 应用 / Agent 开发 offer，月薪 20K 档",
+    "timezone": "Asia/Shanghai",
+    "note": "2026-11-05 调研校准：Spring AI 2.0.x 主线、MCP 2026-07-28 新规范、AI 编程工具进入 JD、20K 为 3–5 年段中低位"
+  },
+  "phases": [
+    {
+      "id": "P0",
+      "name": "地基与系统",
+      "weeks": "W1–W2",
+      "goal": "跑通 JVM + Python + 前端三条链路，建立评测意识与每日系统"
+    },
+    {
+      "id": "P1",
+      "name": "应用核心",
+      "weeks": "W3–W5",
+      "goal": "Prompt / 结构化输出 / 工具调用 / 上下文 / 安全护栏练到能写能讲"
+    },
+    {
+      "id": "P2",
+      "name": "RAG 生产级",
+      "weeks": "W6–W9",
+      "goal": "做出有权限、有引用、有评估数字的企业知识库 v1"
+    },
+    {
+      "id": "P3",
+      "name": "Agent Harness",
+      "weeks": "W10–W14",
+      "goal": "从会调工具到能搭可靠的 Agent 运行时：MCP、状态图、记忆、多 Agent"
+    },
+    {
+      "id": "P4",
+      "name": "生产化与差异化",
+      "weeks": "W15–W17",
+      "goal": "性能、成本、安全、部署全部有数字，并启动投递"
+    },
+    {
+      "id": "P5",
+      "name": "求职冲刺",
+      "weeks": "W18–W22",
+      "goal": "面试通过率、项目深挖、offer 谈判"
+    }
+  ],
+  "weeks": [
+    {
+      "week": 1,
+      "start": "2026-11-09",
+      "end": "2026-11-15",
+      "phase": "P0",
+      "theme": "环境、模型与第一条链路",
+      "outcomes": [
+        "Java 21 + Spring Boot + Spring AI 2.0.x 跑通 chat / stream / structured output",
+        "Python 3.12 + uv 环境与 OpenAI 兼容调用跑通",
+        "5 家模型 × 10 任务横评表（质量 / 延迟 / token / 成本）",
+        "Next.js + React 跑通一个流式对话页",
+        "GitHub 仓库、打卡系统、博客账号、CLAUDE.md 项目规则就绪"
+      ],
+      "project": "hello-ai：Spring AI CLI + Next.js 对话页",
+      "eval": [
+        "模型横评表 ≥ 50 行数据",
+        "记录每家模型首 token 延迟与单次成本"
+      ],
+      "output": "1 篇《2026 年 Java 开发者怎么选模型》",
+      "hours": 20,
+      "milestone": false,
+      "note": "先把环境一次性装好；Claude Code 从今天开始每天用，并记录效率证据"
+    },
+    {
+      "week": 2,
+      "start": "2026-11-16",
+      "end": "2026-11-22",
+      "phase": "P0",
+      "theme": "Prompt、结构化输出与工具调用",
+      "outcomes": [
+        "Prompt 四要素 + few-shot + CoT + 分隔符防注入",
+        "JSON Schema 结构化输出 + 校验 / 重试",
+        "Function Calling 全链路 + 手写 tool loop（不依赖框架）",
+        "SSE 流式协议与前端消费",
+        "30 条评测集 v0 + 评分脚本"
+      ],
+      "project": "ToolAgent CLI v0 + chat UI v1",
+      "eval": [
+        "结构化输出成功率 ≥ 95%",
+        "工具调用成功率 ≥ 90%（30 条用例）"
+      ],
+      "output": "1 篇《Function Calling 不是魔法：手写一遍就懂了》",
+      "hours": 20,
+      "milestone": false,
+      "note": "手写一遍 tool loop，是后面所有 Agent 面试的地基"
+    },
+    {
+      "week": 3,
+      "start": "2026-11-23",
+      "end": "2026-11-29",
+      "phase": "P1",
+      "theme": "上下文工程与安全护栏",
+      "outcomes": [
+        "context window / token 预算 / 截断 / 摘要 / 压缩",
+        "Prompt 注入攻击与防御（直接 / 间接 / 工具返回）",
+        "PII 脱敏、输出审核、结构化校验",
+        "LLM-as-judge 评分器 + rubric",
+        "成本 / 延迟看板 v0"
+      ],
+      "project": "guardrails 模块 + eval harness v1",
+      "eval": [
+        "20 条注入用例拦截率 ≥ 90%",
+        "judge 与人工一致率 ≥ 80%"
+      ],
+      "output": "1 篇《RAG / Agent 上线前必须做的 10 项安全检查》",
+      "hours": 20,
+      "milestone": false,
+      "note": "安全是 20K 岗位的加分项，也是多数候选人的空白"
+    },
+    {
+      "week": 4,
+      "start": "2026-11-30",
+      "end": "2026-12-06",
+      "phase": "P1",
+      "theme": "ReAct、工具设计与对话体验（回炉日）",
+      "outcomes": [
+        "手写 ReAct（思考-行动-观察）并对比框架实现",
+        "工具设计原则：幂等、超时、重试、权限、审批",
+        "前端：Markdown / 代码高亮 / 引用 / 错误重试 / 会话状态",
+        "回炉日：白板重写 agent loop + 第一次模拟面试",
+        "决策日志 ≥ 3 条"
+      ],
+      "project": "ReAct agent + chat UI v2",
+      "eval": [
+        "10 个任务完成率 ≥ 70%",
+        "P95 端到端延迟 < 10s"
+      ],
+      "output": "1 篇《ReAct 的 5 种失败模式与兜底》",
+      "hours": 20,
+      "milestone": true,
+      "note": "每月回炉日：W4 / W8 / W12 / W16 / W20"
+    },
+    {
+      "week": 5,
+      "start": "2026-12-07",
+      "end": "2026-12-13",
+      "phase": "P1",
+      "theme": "项目立项与数据管道",
+      "outcomes": [
+        "旗舰项目 Atlas 立项书（目标用户 / 场景 / 指标 / 架构）",
+        "数据源盘点与 100 条真实问答评测集",
+        "文档解析原型（PDF / Word / HTML，含表格）",
+        "架构图与技术选型 ADR",
+        "30 份招聘 JD 词频分析"
+      ],
+      "project": "Atlas 需求与数据准备",
+      "eval": [
+        "评测集 100 条，覆盖 5 类问题",
+        "评测集有标准答案与评分标准"
+      ],
+      "output": "1 篇《从 0 设计企业知识库：先定评测集》",
+      "hours": 20,
+      "milestone": false,
+      "note": "评测集是项目与玩具的分水岭，先于代码完成"
+    },
+    {
+      "week": 6,
+      "start": "2026-12-14",
+      "end": "2026-12-20",
+      "phase": "P2",
+      "theme": "解析与切分",
+      "outcomes": [
+        "PDF 版式 / 表格 / 扫描件 OCR 的取舍",
+        "固定 / 递归 / 语义 / 父子块切分 + metadata",
+        "切分实验：chunk size / overlap 对 recall 的影响",
+        "数据清洗、去重、版本与增量更新"
+      ],
+      "project": "ingestion pipeline",
+      "eval": [
+        "解析成功率 ≥ 95%",
+        "建立检索 recall@5 基线"
+      ],
+      "output": "1 篇《切分不是调参：从文档结构出发》",
+      "hours": 20,
+      "milestone": false,
+      "note": "切分质量决定 RAG 上限，别急着上向量库"
+    },
+    {
+      "week": 7,
+      "start": "2026-12-21",
+      "end": "2026-12-27",
+      "phase": "P2",
+      "theme": "向量化与混合检索",
+      "outcomes": [
+        "embedding 模型横评（中文 / 多语 / 成本 / 维度）",
+        "pgvector 索引（HNSW / IVF）与参数调优",
+        "BM25 + 向量 + RRF 混合检索",
+        "元数据过滤与多租户权限"
+      ],
+      "project": "retrieval service",
+      "eval": [
+        "recall@5 ≥ 80%",
+        "P95 检索延迟 < 200ms",
+        "权限用例 0 越权"
+      ],
+      "output": "1 篇《Hybrid Search 实战：BM25 为什么还活着》",
+      "hours": 20,
+      "milestone": false,
+      "note": "混合检索是性价比最高的 RAG 优化之一"
+    },
+    {
+      "week": 8,
+      "start": "2026-12-28",
+      "end": "2027-01-03",
+      "phase": "P2",
+      "theme": "Rerank、生成与引用（元旦）",
+      "outcomes": [
+        "rerank 模型选型与收益评估",
+        "上下文组装、引用定位、拒答策略",
+        "答案评估：faithfulness / relevance / correctness",
+        "badcase 分类与修复闭环"
+      ],
+      "project": "RAG answer service + citation UI",
+      "eval": [
+        "faithfulness ≥ 0.85",
+        "引用准确率 ≥ 90%",
+        "P95 首 token < 2s"
+      ],
+      "output": "1 篇《RAG 答错了，怎么定位是检索还是生成》",
+      "hours": 18,
+      "milestone": false,
+      "note": "元旦只休一天，保持手感即可"
+    },
+    {
+      "week": 9,
+      "start": "2027-01-04",
+      "end": "2027-01-10",
+      "phase": "P2",
+      "theme": "Atlas v1 收尾 + 管理后台（回炉日）",
+      "outcomes": [
+        "文档管理 / 权限 / 反馈 / 统计后台",
+        "Docker Compose 一键部署 + 可访问演示环境（公网/内网）",
+        "评估报告 v1（指标 + badcase + 改进）",
+        "3 分钟 demo 视频 + README 架构图",
+        "回炉日：模拟面试 + 项目讲述"
+      ],
+      "project": "Atlas v1 完整可演示",
+      "eval": [
+        "100 条评测集跑分完成",
+        "核心指标达标并写进 README"
+      ],
+      "output": "项目 v1 + 评估报告 + 2 篇博客",
+      "hours": 22,
+      "milestone": true,
+      "note": "v1 是第一个可以拿去面试的项目，必须能现场演示"
+    },
+    {
+      "week": 10,
+      "start": "2027-01-11",
+      "end": "2027-01-17",
+      "phase": "P3",
+      "theme": "工具平台与 MCP（2026-07-28 新规范）",
+      "outcomes": [
+        "工具注册 / 发现 / 版本 / 权限 / 审计",
+        "MCP 2026-07-28 新规范：client + server（Java SDK），接入 2 个真实工具",
+        "工具沙箱、幂等、超时、重试、限流",
+        "OpenTelemetry + Langfuse trace 全链路"
+      ],
+      "project": "tool platform + MCP server",
+      "eval": [
+        "接入 10 个工具",
+        "trace 覆盖率 100%",
+        "工具失败可恢复"
+      ],
+      "output": "1 篇《MCP 到底解决了什么问题》",
+      "hours": 20,
+      "milestone": false,
+      "note": "MCP 2026-07 已无状态化；2025 年教程的 initialize/session 写法已过时，以官方 changelog 为准"
+    },
+    {
+      "week": 11,
+      "start": "2027-01-18",
+      "end": "2027-01-24",
+      "phase": "P3",
+      "theme": "状态图编排与 HITL",
+      "outcomes": [
+        "状态图：节点 / 边 / 状态 / 条件分支 / 循环",
+        "checkpoint 持久化与断点恢复",
+        "人工审批（HITL）：暂停 / 恢复 / 超时 / 拒绝",
+        "Spring AI 2.x / LangGraph4j / ADK Java 选型对照 + Python LangGraph 同功能"
+      ],
+      "project": "可恢复的审批工作流",
+      "eval": [
+        "中断恢复成功率 100%",
+        "审批平均等待 < 1 天（演示环境）"
+      ],
+      "output": "1 篇《Agent 不是 Prompt 链：状态机才是骨架》",
+      "hours": 20,
+      "milestone": false,
+      "note": "用 Spring AI Alibaba Graph / LangGraph4j 做主实现，LangGraph 做对照"
+    },
+    {
+      "week": 12,
+      "start": "2027-01-25",
+      "end": "2027-01-31",
+      "phase": "P3",
+      "theme": "记忆与上下文工程（Session Memory）",
+      "outcomes": [
+        "Spring AI 2.1 Session Memory（事件日志 + 回合压缩）+ 短期/长期记忆",
+        "记忆检索与写入策略、遗忘与冲突",
+        "上下文预算与压缩、token 成本",
+        "记忆评估：任务成功率 / 一致性 / 成本"
+      ],
+      "project": "memory module",
+      "eval": [
+        "多轮任务成功率提升 ≥ 15%",
+        "token 成本下降 ≥ 20%"
+      ],
+      "output": "1 篇《Agent 记忆：存什么、怎么取、何时忘》",
+      "hours": 20,
+      "milestone": false,
+      "note": "先读 Spring AI 2.1 Session Memory 文档，再决定自研还是用框架"
+    },
+    {
+      "week": 13,
+      "start": "2027-02-01",
+      "end": "2027-02-07",
+      "phase": "P3",
+      "theme": "春节缓冲周（轻量）",
+      "outcomes": [
+        "复盘前 12 周：完成率 / 指标 / 欠账",
+        "读 1 篇论文（Agent memory / planning）+ 笔记",
+        "卡片清零、博客补 1 篇",
+        "制定后 10 周计划"
+      ],
+      "project": "无重开发，修 bug / 补文档",
+      "eval": [
+        "欠账清单清零 ≥ 80%"
+      ],
+      "output": "1 篇阶段复盘",
+      "hours": 10,
+      "milestone": false,
+      "note": "除夕 2/5、春节 2/6；这周不排硬任务，陪家人"
+    },
+    {
+      "week": 14,
+      "start": "2027-02-08",
+      "end": "2027-02-14",
+      "phase": "P3",
+      "theme": "多 Agent 与可靠性（回炉日）",
+      "outcomes": [
+        "supervisor / handoff / planner-executor 模式",
+        "失败恢复：重试 / 降级 / 熔断 / 预算 / 死循环检测",
+        "多 Agent 协作评估（任务成功率 / 成本 / 延迟）",
+        "回炉日：全链路 mock + 白板设计"
+      ],
+      "project": "multi-agent workflow + reliability report",
+      "eval": [
+        "50 任务成功率 ≥ 80%",
+        "单任务成本 ≤ ¥0.1"
+      ],
+      "output": "1 篇《多 Agent 何时值得：三种模式与代价》",
+      "hours": 20,
+      "milestone": true,
+      "note": "先证明单 Agent 不够用，再上多 Agent"
+    },
+    {
+      "week": 15,
+      "start": "2027-02-15",
+      "end": "2027-02-21",
+      "phase": "P4",
+      "theme": "性能、成本与模型网关",
+      "outcomes": [
+        "虚拟线程 / 异步 / SSE 并发模型",
+        "多级缓存（精确 / 语义）、限流、队列、批处理",
+        "模型网关：路由 / 降级 / 灰度 / 配额 / 成本核算（参考 LangChain4j Confidence Cascade）",
+        "k6 / JMeter 压测报告（QPS / P95 / 错误率）",
+        "成本报表与降本 5 招"
+      ],
+      "project": "gateway + load test",
+      "eval": [
+        "50 并发 P95 < 3s",
+        "错误率 < 1%",
+        "成本下降 ≥ 30%"
+      ],
+      "output": "1 篇《AI 应用的 P95 与成本：Java 后端的降维打击》",
+      "hours": 22,
+      "milestone": false,
+      "note": "把 Java 后端的看家本领翻译成 AI 语言"
+    },
+    {
+      "week": 16,
+      "start": "2027-02-22",
+      "end": "2027-02-28",
+      "phase": "P4",
+      "theme": "安全治理 + 求职物料 + 试水投递",
+      "outcomes": [
+        "威胁模型：注入 / 越权 / 数据泄露 / 工具滥用 / 供应链",
+        "多租户隔离、审计、内容安全、密钥管理",
+        "简历 v1（Java + AI + AI 编程工具证据）、作品集页（含 demo URL）、3 分钟视频",
+        "目标公司清单 60 家 + 内推渠道",
+        "试水投递 10 家 + 面试记录表"
+      ],
+      "project": "security hardening + portfolio",
+      "eval": [
+        "红队 20 用例拦截 ≥ 90%",
+        "简历被 3 位业内人士 review"
+      ],
+      "output": "简历 + 作品集 + 10 投递",
+      "hours": 22,
+      "milestone": false,
+      "note": "先投 10 家练手，暴露问题比拿 offer 更重要"
+    },
+    {
+      "week": 17,
+      "start": "2027-03-01",
+      "end": "2027-03-07",
+      "phase": "P4",
+      "theme": "Atlas v3 收尾 + 影响力 + 正式投递",
+      "outcomes": [
+        "生产化部署（Docker / K8s 基础）、监控告警、备份",
+        "项目文档 / 架构图 / 评估报告 / 演示视频完善",
+        "开源 PR 1 个或深度博客 3 篇",
+        "投递 30 家 + 内推 10 个",
+        "模拟面试 2 次"
+      ],
+      "project": "Atlas v3 发布",
+      "eval": [
+        "5 分钟可完整演示",
+        "评估指标全部有数字"
+      ],
+      "output": "v3 + 博客 + 40 投递",
+      "hours": 24,
+      "milestone": true,
+      "note": "金三银四开始，投递与面试优先于继续打磨代码"
+    },
+    {
+      "week": 18,
+      "start": "2027-03-08",
+      "end": "2027-03-14",
+      "phase": "P5",
+      "theme": "面试系统复习 + 高频题",
+      "outcomes": [
+        "RAG 20 问 / Agent 20 问 / 工程 20 问，每题 2 分钟能讲",
+        "系统设计 3 题：知识库 / Agent 平台 / AI 网关",
+        "手撕 5 题：agent loop、限流、LRU、SSE、分词",
+        "模拟面试 2 次 + 录音复盘",
+        "投递 40 家"
+      ],
+      "eval": [
+        "模拟评分 ≥ 3.5/5",
+        "题库掌握率 ≥ 80%"
+      ],
+      "output": "面试题库 + 40 投递",
+      "hours": 26,
+      "milestone": false,
+      "note": "面试期每周学习时间上调到 26h"
+    },
+    {
+      "week": 19,
+      "start": "2027-03-15",
+      "end": "2027-03-21",
+      "phase": "P5",
+      "theme": "项目深挖 + 行为面 + 谈判准备",
+      "outcomes": [
+        "3 / 10 / 30 分钟项目讲述脚本（含数字与取舍）",
+        "STAR 故事 8 个：转行 / 冲突 / 失败 / 推动 / 学习",
+        "薪资调研：目标岗位 20K 的区间与谈判话术",
+        "模拟面试 2 次（hiring manager 视角）",
+        "投递 40 家 + 跟进"
+      ],
+      "eval": [
+        "项目追问能扛 5 层",
+        "每个故事可 2 分钟讲完"
+      ],
+      "output": "话术卡 + 40 投递",
+      "hours": 26,
+      "milestone": false,
+      "note": "20K 面试的分水岭：能不能讲清'为什么'"
+    },
+    {
+      "week": 20,
+      "start": "2027-03-22",
+      "end": "2027-03-28",
+      "phase": "P5",
+      "theme": "面试实战与复盘（回炉日）",
+      "outcomes": [
+        "每周面试 ≥ 3 场，逐场复盘（问题 / 卡点 / 改进）",
+        "弱项定向补强（根据面试反馈）",
+        "手撕保持 3 题/周",
+        "投递 30 家 + 猎头沟通"
+      ],
+      "eval": [
+        "一面通过率 ≥ 50%",
+        "复盘闭环 100%"
+      ],
+      "output": "面试复盘表 + 30 投递",
+      "hours": 26,
+      "milestone": true,
+      "note": "面试反馈 > 自我感觉，按反馈改"
+    },
+    {
+      "week": 21,
+      "start": "2027-03-29",
+      "end": "2027-04-04",
+      "phase": "P5",
+      "theme": "冲刺、offer 比较与谈判",
+      "outcomes": [
+        "终面准备：公司业务 / 技术栈 / 团队 / 规划",
+        "offer 评估表（薪资 / 成长 / 稳定性 / 通勤 / 团队）",
+        "谈判：期望薪资 / 签字费 / 入职时间 / 备选",
+        "保底方案：继续投递 / 外包 / 远程"
+      ],
+      "eval": [
+        "至少 1 个 offer 进入谈判"
+      ],
+      "output": "offer 决策表",
+      "hours": 24,
+      "milestone": false,
+      "note": "没有 offer 时，先拿一个保底再谈"
+    },
+    {
+      "week": 22,
+      "start": "2027-04-05",
+      "end": "2027-04-11",
+      "phase": "P5",
+      "theme": "offer 决策与交接",
+      "outcomes": [
+        "选定 offer + 背调材料",
+        "离职沟通与交接计划",
+        "入职前 30 天学习计划",
+        "复盘整个项目：方法 / 数据 / 可复用资产"
+      ],
+      "eval": [
+        "offer 接受 / 入职时间确定"
+      ],
+      "output": "30 天入职计划 + 总结",
+      "hours": 16,
+      "milestone": true,
+      "note": "拿到 offer 后不要停，入职前 30 天决定试用期表现"
+    }
+  ]
+}
