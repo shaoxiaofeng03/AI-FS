@@ -2,6 +2,8 @@
 
 > 目标：把文档、打卡看板、作战看板部署到 `https://<你的用户名>.github.io/<仓库名>/`，并且能用 GitHub Actions 在手机/电脑上打卡。
 > 这个方案**不需要服务器、不需要数据库、不需要在浏览器里放 PAT**。
+>
+> **当前仓库**：`shaoxiaofeng03/AI-FS`｜**线上地址**：<https://shaoxiaofeng03.github.io/AI-FS/>｜**看板**：<https://shaoxiaofeng03.github.io/AI-FS/tracker/>
 
 ---
 
@@ -36,7 +38,7 @@
 
 ### 2.1 创建仓库
 
-在 GitHub 新建一个 **public** 仓库（免费 Pages 要求 public；private 需要 GitHub Pro），例如 `ai-fullstack-plan`。
+当前仓库已创建：**`shaoxiaofeng03/AI-FS`**（public）。如果要新建，选 **public**（免费 Pages 要求 public；private 需要 GitHub Pro）。
 
 ### 2.2 推送代码
 
@@ -46,7 +48,7 @@ git init
 git add .
 git commit -m "feat: AI 全栈 22 周作战包 + Pages"
 git branch -M main
-git remote add origin https://github.com/<你的用户名>/<仓库名>.git
+git remote add origin git@github.com:shaoxiaofeng03/AI-FS.git
 git push -u origin main
 ```
 
@@ -76,8 +78,8 @@ git push -u origin main
 完成后访问：
 
 ```
-https://<你的用户名>.github.io/<仓库名>/
-https://<你的用户名>.github.io/<仓库名>/tracker/
+https://shaoxiaofeng03.github.io/AI-FS/
+https://shaoxiaofeng03.github.io/AI-FS/tracker/
 ```
 
 > 首次部署可能需要 1–2 分钟；如果 404，等 workflow 完成后再刷新。

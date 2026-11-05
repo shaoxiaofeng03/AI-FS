@@ -3,6 +3,7 @@
 > **目标**：2027 年 4 月中前拿到 **AI 应用开发 / Agent 开发** offer，月薪 **20K 档**，具备后端 + 前端全栈交付能力。
 > **窗口**：2026-11-09 → 2027-04-11（22 周）｜**投入**：20h/周（工作日 2h + 周末 10h）｜**总预算**：约 456h
 > **定位**：不做算法研究，不丢 Java 去当 Python 新人；做**能把大模型能力在企业系统里落地、可观测、算得清成本、有完整前端**的工程师。
+> **在线版**：<https://shaoxiaofeng03.github.io/AI-FS/> ｜ **打卡看板**：<https://shaoxiaofeng03.github.io/AI-FS/tracker/>
 
 ---
 
@@ -105,7 +106,7 @@ python3 scripts/gen_checkin.py --all --force
 1. 新建 **public** 仓库，把本目录 push 上去（`main` 分支）。
 2. 仓库 **Settings → Pages → Source** 选 **GitHub Actions**。
 3. 需要 Actions 打卡的话，**Settings → Actions → General → Workflow permissions** 选 **Read and write**。
-4. push 后等待 `Deploy GitHub Pages` 完成，访问 `https://<用户名>.github.io/<仓库名>/`。
+4. push 后等待 `Deploy GitHub Pages` 完成，访问 <https://shaoxiaofeng03.github.io/AI-FS/>。
 5. 每日打卡：仓库 **Actions → 每日打卡（Cloud Check-in）→ Run workflow**；数据写进 `data/checkins.json`，看板自动合并。
 
 > 完整步骤、base path、自定义域名、常见 404/权限问题：[GITHUB_PAGES.md](GITHUB_PAGES.md)。
