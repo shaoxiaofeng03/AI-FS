@@ -27,6 +27,8 @@ features:
     details: 数据默认存浏览器；也可用 GitHub Actions 表单打卡，提交 data/checkins.json，Pages 看板自动读取。
 ---
 
+<TodayPanel />
+
 ## 这是什么
 
 这是一套给**在职 Java 后端**准备的 22 周转型作战包，不是书单：
