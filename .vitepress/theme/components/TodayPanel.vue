@@ -100,6 +100,15 @@ const pythonNotesHref = computed(() => {
   return ''
 })
 
+function goTracker(event) {
+  if (event && (event.metaKey || event.ctrlKey || event.shiftKey || event.altKey)) return
+  if (event) {
+    event.preventDefault()
+    event.stopPropagation()
+  }
+  window.location.assign(trackerHref.value)
+}
+
 function readStore() {
   try {
     return JSON.parse(window.localStorage.getItem(STORAGE_KEY) || '{}')
@@ -218,7 +227,7 @@ onUnmounted(() => {
           <template v-if="todayRecord">✅ 今天已打卡 {{ todayRecord.hours }}h</template>
           <template v-else>○ 今天还没打卡</template>
         </p>
-        <a class="tp-btn" :href="trackerHref">打开打卡看板 →</a>
+        <a class="tp-btn" :href="trackerHref" @click="goTracker">打开打卡看板 →</a>
       </div>
 
       <div class="tp-card">
@@ -265,7 +274,7 @@ onUnmounted(() => {
             <span>按 §0 三轮走，6h</span>
           </li>
           <li>
-            <a :href="trackerHref">打卡看板 / 云端同步</a>
+            <a :href="trackerHref" @click="goTracker">打卡看板 / 云端同步</a>
             <span>记录小时、连续天数、22 周进度</span>
           </li>
         </ul>
