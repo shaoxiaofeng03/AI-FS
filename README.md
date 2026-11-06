@@ -59,6 +59,8 @@ W1–W2          W3–W5          W6–W9           W10–W14         W15–W17 
 | [08 · 资源清单](docs/08-资源清单.md) | 按阶段看什么、不看什么 | 找资料时 |
 | [09 · 在线打卡与看板](docs/09-在线工具.md) | GitHub Pages 上怎么打卡、数据存哪、手机怎么用 | 部署后 |
 | [10 · 分阶段知识清单与资源](docs/10-分阶段知识清单与学习资源.md) | **每个阶段学哪些知识点、顺序、文档/视频、自测题** | 每阶段开始前 |
+| [W1 大模型核心概念速记](docs/notes/W1-大模型核心概念速记.md) | Token/上下文/采样/SSE/工具调用，配 Java 类比 + 15 题 | W1–W2 |
+| [W1 Python 够用线教程](docs/notes/W1-Python够用线教程.md) | Java 开发者 6h 够用线 + 20 题自测 | W1–W2 |
 | [GitHub Pages 部署](GITHUB_PAGES.md) | 建仓库、开 Pages、Actions 打卡、自定义域名 | 上线时 |
 | [市场与技术调研](research/2026-市场与技术调研.md) | 2026-11 岗位 JD、版本、价格、面试考察、来源 | 核实 / 更新认知 |
 
@@ -188,6 +190,7 @@ AI全栈/
 ├── index.md                  # GitHub Pages 首页（VitePress）
 ├── GITHUB_PAGES.md           # 部署 + 云端打卡指南
 ├── docs/                     # 00–10 学习/求职/在线工具/知识清单
+│   └── notes/                # W1 配套笔记（大模型概念 / Python 够用线）
 ├── plan/
 │   ├── plan.json             # 22 周计划数据源
 │   └── plan.csv              # Excel/飞书版

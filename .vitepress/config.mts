@@ -69,6 +69,13 @@ export default defineConfig({
         ]
       },
       {
+        text: '学习笔记',
+        items: [
+          { text: 'W1 大模型核心概念速记', link: '/docs/notes/W1-大模型核心概念速记' },
+          { text: 'W1 Python 够用线教程', link: '/docs/notes/W1-Python够用线教程' }
+        ]
+      },
+      {
         text: '项目与求职',
         items: [
           { text: '04 · 旗舰项目 Atlas', link: '/docs/04-旗舰项目Atlas' },
