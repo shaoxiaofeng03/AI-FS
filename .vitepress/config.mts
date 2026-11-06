@@ -80,7 +80,8 @@ export default defineConfig({
         items: [
           { text: '06 · 专家方法与工具', link: '/docs/06-专家方法与工具' },
           { text: '07 · 文档生成方法', link: '/docs/07-文档生成方法' },
-          { text: '08 · 资源清单', link: '/docs/08-资源清单' }
+          { text: '08 · 资源清单', link: '/docs/08-资源清单' },
+          { text: '10 · 分阶段知识清单与资源', link: '/docs/10-分阶段知识清单与学习资源' }
         ]
       },
       {
